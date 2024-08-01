@@ -14,12 +14,15 @@
     padding: 1vh;
     border-radius: 2vh;
   }
-
+  ::ng-deep .ngx-charts text {
+    font-size: larger;
+  }
   .chart-container {
     background: white;
     max-width: 100%;
   }
-  .pie-label{
-    font-size: 30px;
+  .counter-block{
+    display: flex;
+    flex-direction: row;
   }
 }

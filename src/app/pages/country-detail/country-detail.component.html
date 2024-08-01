@@ -1,0 +1,24 @@
+<div class="detail-container" *ngIf="country">
+  <h1>{{ country.country }}</h1>
+  <button (click)="goBack()">Retour</button>
+
+  <p>Nombre de participations aux JO : {{ country.participations.length }}</p>
+  <p>Nombre total de médailles : {{ totalMedals }}</p>
+  <p>Nombre total d'athlètes présentés : {{ totalAthletes }}</p>
+
+  <div class="chart-container">
+    <ngx-charts-line-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="chartData"
+      [legend]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [autoScale]="true">
+    </ngx-charts-line-chart>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Chargement des données...</p>
+</ng-template>

@@ -1,10 +1,15 @@
 <div class="dashboard-container">
   <h1>Medals per Country</h1>
 
-  <p>{{ (olympics$ | async)?.length }} data loaded</p>
+  <div class="counter-block">
+    <!-- Composant pour afficher le nombre total de Jeux Olympiques -->
+    <app-counter [title]="'Total Jeux Olympiques'" [count$]="totalGames$"></app-counter>
 
-  <div *ngIf="chartData.length > 0; else loading"  class="chart-container">
+    <!-- Composant pour afficher le nombre total de pays participants -->
+    <app-counter [title]="'Total Pays Participants'" [count$]="totalCountries$"></app-counter>
+  </div>
 
+  <div *ngIf="chartData.length > 0; else loading" class="chart-container">
     <ngx-charts-pie-chart
       [view]="view"
       [results]="chartData"
@@ -15,6 +20,7 @@
       [labels]="showLabels">
     </ngx-charts-pie-chart>
   </div>
+
   <ng-template #loading>
     <p>Chargement des données...</p>
   </ng-template>

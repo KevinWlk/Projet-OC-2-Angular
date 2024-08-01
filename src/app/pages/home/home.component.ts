@@ -11,7 +11,6 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public olympics$: Observable<OlympicCountry[] | null> = new Observable();
-
   public chartData: any[] = [];
 
   public showLegend: boolean = false;
@@ -34,7 +33,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription(); // Pour gérer les abonnements
 
-  constructor(private olympicService: OlympicService) {}
+  public totalGames$: Observable<number>;
+  public totalCountries$: Observable<number>;
+
+  constructor(private olympicService: OlympicService) {
+    this.totalGames$ = this.olympicService.getTotalGames();
+    this.totalCountries$ = this.olympicService.getTotalCountries();
+  }
 
   ngOnInit(): void {
     // Initialisation de l'observable olympics$

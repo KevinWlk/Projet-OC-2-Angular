@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import {CounterComponent} from "./counter/counter.component";
 
 @NgModule({
   declarations: [
@@ -14,12 +15,13 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     HomeComponent,
     NotFoundComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgxChartsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NgxChartsModule,
+        CounterComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
