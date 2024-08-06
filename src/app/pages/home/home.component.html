@@ -17,7 +17,8 @@
       [legend]="showLegend"
       [explodeSlices]="explodeSlices"
       [doughnut]="doughnut"
-      [labels]="showLabels">
+      [labels]="showLabels"
+      (select)="onCountrySelect($event)">
     </ngx-charts-pie-chart>
   </div>
 

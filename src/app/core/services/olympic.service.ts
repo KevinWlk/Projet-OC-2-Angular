@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, map, Observable, throwError} from 'rxjs';
+import { BehaviorSubject, map, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 
@@ -27,11 +27,11 @@ export class OlympicService {
       })
     );
   }
-  // Retourne un observable des données olympiques
+
   getOlympics(): Observable<OlympicCountry[] | null> {
     return this.olympics$.asObservable();
   }
-  // Retourne le nombre total de Jeux Olympiques
+
   getTotalGames(): Observable<number> {
     return new Observable<number>((observer) => {
       this.olympics$.subscribe((data) => {
@@ -44,7 +44,7 @@ export class OlympicService {
       });
     });
   }
-  // Retourne le nombre total de pays participants
+
   getTotalCountries(): Observable<number> {
     return new Observable<number>((observer) => {
       this.olympics$.subscribe((data) => {
@@ -61,7 +61,7 @@ export class OlympicService {
     return this.olympics$.pipe(
       map(olympics => {
         if (!olympics) return null;
-        const countryId = Number(id); // Conversion de l'ID en nombre
+        const countryId = Number(id);
         return olympics.find(country => country.id === countryId) || null;
       })
     );

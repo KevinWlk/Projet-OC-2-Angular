@@ -2,7 +2,8 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
-import { Color, ScaleType } from '@swimlane/ngx-charts';
+import {Color, id, ScaleType} from '@swimlane/ngx-charts';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public totalGames$: Observable<number>;
   public totalCountries$: Observable<number>;
 
-  constructor(private olympicService: OlympicService) {
+  constructor(private olympicService: OlympicService, private router: Router) {
     this.totalGames$ = this.olympicService.getTotalGames();
     this.totalCountries$ = this.olympicService.getTotalCountries();
   }
@@ -62,6 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Transformation des données des pays olympiques en un format adapté pour le graphique
   private transformData(data: OlympicCountry[]): any[] {
     return data.map(country => ({
+      id: country.id,
       name: country.country,
       value: country.participations.reduce((sum, p) => sum + p.medalsCount, 0)
     }));
@@ -72,4 +74,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   onResize(event?: any) {
     this.view = [window.innerWidth / 1.10, 600]; // Assurer que c'est un tuple
   }
+
+  goToDetail(id: number) {
+    this.router.navigate(['/country',id])
+  }
+
+  onCountrySelect(event: any): void {
+    const selectedCountry = this.chartData.find(country => country.name === event.name);
+    if (selectedCountry) {
+      this.router.navigate(['/country', selectedCountry.id]);
+    }
+  }
+
+
 }

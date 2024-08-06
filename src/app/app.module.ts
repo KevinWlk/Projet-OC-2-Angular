@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {CounterComponent} from "./counter/counter.component";
+import { CountryDetailComponent } from './pages/countryDetail/countryDetail.component';
+import {HeaderComponent} from "./header/header.component";
 
 @NgModule({
   declarations: [
@@ -15,14 +17,17 @@ import {CounterComponent} from "./counter/counter.component";
     HomeComponent,
     NotFoundComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        NgxChartsModule,
-        CounterComponent
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    NgxChartsModule,
+    CounterComponent,
+    CountryDetailComponent,
+    HeaderComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

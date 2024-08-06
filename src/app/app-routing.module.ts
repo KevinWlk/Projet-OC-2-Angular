@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import {CountryDetailComponent} from "./pages/country-detail/country-detail.component";
+import {CountryDetailComponent} from "./pages/countryDetail/countryDetail.component";
 
 const routes: Routes = [
   {
@@ -10,13 +10,13 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'country/:id',
+    component: CountryDetailComponent
+  },
+  {
     path: '**',
     component: NotFoundComponent,
-  },
-  { path: 'country/:id',
-    component: CountryDetailComponent
   }
-
 ];
 
 @NgModule({

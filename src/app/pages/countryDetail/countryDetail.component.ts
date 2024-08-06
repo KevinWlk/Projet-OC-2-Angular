@@ -3,16 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
-import {Color, NgxChartsModule, ScaleType} from '@swimlane/ngx-charts';
+import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
 
 @Component({
-  selector: 'app-country-detail',
-  templateUrl: './country-detail.component.html',
+  selector: 'app-countryDetail',
+  templateUrl: './countryDetail.component.html',
   standalone: true,
-  imports: [
-    NgxChartsModule
-  ],
-  styleUrls: ['./country-detail.component.scss']
+  imports: [NgxChartsModule],
+  styleUrls: ['./countryDetail.component.scss']
 })
 export class CountryDetailComponent implements OnInit, OnDestroy {
   public country: OlympicCountry | null = null;
@@ -56,10 +54,13 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
   }
 
   private transformData(country: OlympicCountry): any[] {
-    return country.participations.map(participation => ({
-      name: participation.year.toString(),
-      value: participation.medalsCount
-    }));
+    return [{
+      name: country.country,
+      series: country.participations.map(participation => ({
+        name: participation.year.toString(),
+        value: participation.medalsCount
+      }))
+    }];
   }
 
   private calculateTotalMedals(country: OlympicCountry): number {
