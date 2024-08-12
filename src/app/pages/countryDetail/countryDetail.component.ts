@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, HostListener} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, of } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -52,6 +52,8 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
         })
       );
     });
+    // Redimensionnement initial du graphique
+    this.onResize();
   }
 
   ngOnDestroy(): void {
@@ -66,6 +68,11 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
         value: participation.medalsCount
       }))
     }];
+  }
+  // Écoute de l'événement de redimensionnement de la fenêtre et mise à jour de la taille du graphique
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: any) {
+    this.view = [window.innerWidth / 1.10, 600];
   }
 
   private calculateTotalMedals(country: OlympicCountry): number {

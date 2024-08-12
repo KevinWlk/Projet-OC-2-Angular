@@ -1,6 +1,5 @@
 <div class="detail-container" *ngIf="country">
   <h1>{{ country.country }}</h1>
-  <button (click)="goBack()">Retour</button>
   <div class="counter-block">
     <app-counter [title]="'Nombre de participations aux JO'" [count$]="participationsCount$"></app-counter>
     <app-counter [title]="'Nombre total de médailles'" [count$]="totalMedals$"></app-counter>
@@ -18,6 +17,8 @@
     </ngx-charts-line-chart>
 
   </div>
+
+  <button (click)="goBack()">Retour</button>
 </div>
 
 <ng-template #loading>

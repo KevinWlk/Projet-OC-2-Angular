@@ -6,6 +6,9 @@
   background-color: #ffffff;
   min-height: 100vh;
 
+  .dashboard-container.counter-block{
+  }
+
   h1 {
     margin-bottom: 20px;
     font-size: 2em;
@@ -24,5 +27,7 @@
   .counter-block{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

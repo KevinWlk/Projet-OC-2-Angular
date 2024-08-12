@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     }));
     // Redimensionnement initial du graphique
-    this.onResize();
+    // this.onResize();
   }
 
   ngOnDestroy(): void {

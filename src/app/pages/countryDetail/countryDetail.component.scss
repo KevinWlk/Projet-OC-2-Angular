@@ -5,7 +5,8 @@
   padding: 20px;
   background-color: #ffffff;
   min-height: 100vh;
-  }
+
+}
 
 h1 {
   margin-bottom: 20px;
@@ -23,4 +24,16 @@ h1 {
   .counter-block{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
   }
+button {
+  margin: 10px;
+
+  font-size: 1em;
+  background-color: #1b7474;
+  color: white;
+  padding: 1vh;
+  border-radius: 2vh;
+}
