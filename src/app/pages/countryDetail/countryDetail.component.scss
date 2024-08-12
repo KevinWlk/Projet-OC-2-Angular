@@ -1,0 +1,26 @@
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  }
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  background-color: #1b7474;
+  color: white;
+  padding: 1vh;
+  border-radius: 2vh;
+
+}
+  .chart-container {
+    background: white;
+    max-width: 100%;
+  }
+  .counter-block{
+    display: flex;
+    flex-direction: row;
+  }

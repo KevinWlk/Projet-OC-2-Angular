@@ -57,6 +57,10 @@ export class OlympicService {
     });
   }
 
+  getTotalAthletes() {
+    return undefined;
+  }
+
   getCountryDetails(id: string): Observable<OlympicCountry | null> {
     return this.olympics$.pipe(
       map(olympics => {

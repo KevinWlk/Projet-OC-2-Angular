@@ -1,11 +1,11 @@
 <div class="detail-container" *ngIf="country">
   <h1>{{ country.country }}</h1>
   <button (click)="goBack()">Retour</button>
-
-  <p>Nombre de participations aux JO : {{ country.participations.length }}</p>
-  <p>Nombre total de médailles : {{ totalMedals }}</p>
-  <p>Nombre total d'athlètes présentés : {{ totalAthletes }}</p>
-
+  <div class="counter-block">
+    <app-counter [title]="'Nombre de participations aux JO'" [count$]="participationsCount$"></app-counter>
+    <app-counter [title]="'Nombre total de médailles'" [count$]="totalMedals$"></app-counter>
+    <app-counter [title]="'Nombre total d\'athlètes présentés'" [count$]="totalAthletes$"></app-counter>
+  </div>
   <div class="chart-container">
     <ngx-charts-line-chart
       [view]="view"
