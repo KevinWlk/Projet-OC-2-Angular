@@ -10,6 +10,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {CounterComponent} from "./counter/counter.component";
 import { CountryDetailComponent } from './pages/countryDetail/countryDetail.component';
 import {HeaderComponent} from "./header/header.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HeaderComponent} from "./header/header.component";
     NgxChartsModule,
     CounterComponent,
     CountryDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
