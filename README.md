@@ -1,29 +1,105 @@
+
 # OlympicGamesStarter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+This project was generated with Angular CLI version 18.0.3.
 
-Don't forget to install your node_modules before starting (`npm install`).
+## Getting Started
 
-## Development server
+Install the necessary dependencies:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+npm install
+```
+
+## Development Server
+
+To start a development server, run:
+
+```bash
+ng serve
+```
+
+Access the app at `http://localhost:4200/`. The application will automatically reload on changes.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To build the project for production, run:
 
-## Where to start
+```bash
+ng build
+```
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+The build artifacts will be stored in the `dist/` directory.
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+## Project Structure
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+This project follows a structured architecture:
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+- **`components`**: Reusable components shared across the application.
+- **`pages`**: Components used specifically for routing and representing different views.
+- **`core`**: Encapsulates the business logic, including:
+  - **`services`**: Handles data fetching and state management.
+  - **`models`**: TypeScript interfaces and models representing data structures.
 
-You're now ready to implement the requested features.
+## Application Features
 
-Good luck!
+- **Data Visualization**: Displays the total number of Olympic editions and participating countries on the homepage, with detailed country statistics.
+- **Navigation**:
+  - **Home Page**: Overview of Olympic data with interactive charts.
+  - **Country Detail Page**: Detailed statistics for each country, with handling for invalid country IDs.
+  - **404 Page**: Custom page for invalid routes or missing data.
+- **Error Handling**: Robust management of missing data and incorrect URLs.
+
+---
+
+# OlympicGamesStarter
+
+Ce projet a été généré avec Angular CLI version 18.0.3.
+
+## Démarrage
+
+Installez les dépendances nécessaires :
+
+```bash
+npm install
+```
+
+## Serveur de développement
+
+Pour démarrer un serveur de développement, exécutez :
+
+```bash
+ng serve
+```
+
+Accédez à l'application sur `http://localhost:4200/`. L'application se rechargera automatiquement en cas de modification.
+
+## Construction
+
+Pour compiler le projet pour la production, exécutez :
+
+```bash
+ng build
+```
+
+Les fichiers compilés seront stockés dans le répertoire `dist/`.
+
+## Structure du projet
+
+Le projet suit une architecture structurée :
+
+- **`components`** : Composants réutilisables partagés dans l'application.
+- **`pages`** : Composants utilisés pour le routage et représentant différentes vues.
+- **`core`** : Encapsule la logique métier, y compris :
+  - **`services`** : Gère la récupération des données et la gestion de l'état.
+  - **`models`** : Interfaces TypeScript et modèles représentant les structures de données.
+
+## Fonctionnalités de l'application
+
+- **Visualisation des données** : Affiche le nombre total d'éditions des JO et de pays participants sur la page d'accueil, avec des statistiques détaillées par pays.
+- **Navigation** :
+  - **Page d'accueil** : Vue d'ensemble des données olympiques avec des graphiques interactifs.
+  - **Page de détail du pays** : Statistiques détaillées pour chaque pays, avec gestion des ID de pays invalides.
+  - **Page 404** : Page personnalisée pour les routes invalides ou les données manquantes.
+- **Gestion des erreurs** : Gestion robuste des données manquantes et des URL incorrectes.
+

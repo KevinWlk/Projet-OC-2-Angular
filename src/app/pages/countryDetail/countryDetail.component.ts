@@ -48,6 +48,9 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
             this.totalMedals$ = of(this.calculateTotalMedals(country));
             this.totalAthletes$ = of(this.calculateTotalAthletes(country));
             this.chartData = this.transformData(country);
+          } else {
+            // Redirige vers la page 404 si le pays n'existe pas
+            this.router.navigate(['/not-found']);
           }
         })
       );
@@ -69,11 +72,14 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
       }))
     }];
   }
-  // Écoute de l'événement de redimensionnement de la fenêtre et mise à jour de la taille du graphique
   @HostListener('window:resize', ['$event'])
   onResize(event?: any) {
-    this.view = [window.innerWidth / 1.10, 600];
+    const ratio = 16 / 9; // Ratio d'aspect classique pour un graphique
+    const width = window.innerWidth / 1.10;
+    const height = width / ratio;
+    this.view = [width, height];
   }
+
 
   private calculateTotalMedals(country: OlympicCountry): number {
     return country.participations.reduce((sum, p) => sum + p.medalsCount, 0);

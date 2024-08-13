@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     }));
     // Redimensionnement initial du graphique
-    // this.onResize();
+    this.onResize();
   }
 
   ngOnDestroy(): void {
@@ -72,7 +72,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Écoute de l'événement de redimensionnement de la fenêtre et mise à jour de la taille du graphique
   @HostListener('window:resize', ['$event'])
   onResize(event?: any) {
-    this.view = [window.innerWidth / 1.10, 600]; // Assurer que c'est un tuple
+    const ratio = 16 / 9; // Ratio d'aspect classique pour un graphique
+    const width = window.innerWidth / 1.10;
+    const height = width / ratio;
+    this.view = [width, height];
   }
 
   goToDetail(id: number) {

@@ -1,6 +1,22 @@
 header {
   text-align: center;
   background-color: #EEE;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   padding: 10px;
+
+  //Image en Background
+  background-image: url('../../assets/images/baniere-JO.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  height: 200px;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 200px;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
 }

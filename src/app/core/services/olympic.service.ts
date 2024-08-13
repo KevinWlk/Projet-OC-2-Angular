@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, throwError } from 'rxjs';
+import {BehaviorSubject, filter, map, Observable, throwError} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 
@@ -33,32 +33,24 @@ export class OlympicService {
   }
 
   getTotalGames(): Observable<number> {
-    return new Observable<number>((observer) => {
-      this.olympics$.subscribe((data) => {
-        if (data) {
-          const totalGames = data.reduce((acc, country) => acc + country.participations.length, 0);
-          observer.next(totalGames);
-        } else {
-          observer.next(0);
-        }
-      });
-    });
+    return this.olympics$.pipe(
+      map(data => {
+        if (!data) return 0;
+        const uniqueYears = new Set<number>();
+        data.forEach(country => {
+          country.participations.forEach(participation => {
+            uniqueYears.add(participation.year);
+          });
+        });
+        return uniqueYears.size;
+      })
+    );
   }
 
   getTotalCountries(): Observable<number> {
-    return new Observable<number>((observer) => {
-      this.olympics$.subscribe((data) => {
-        if (data) {
-          observer.next(data.length);
-        } else {
-          observer.next(0);
-        }
-      });
-    });
-  }
-
-  getTotalAthletes() {
-    return undefined;
+    return this.olympics$.pipe(
+      map(data => data ? data.length : 0)
+    );
   }
 
   getCountryDetails(id: string): Observable<OlympicCountry | null> {

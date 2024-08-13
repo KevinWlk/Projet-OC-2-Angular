@@ -1,7 +1,7 @@
 <div class="detail-container" *ngIf="country">
   <h1>{{ country.country }}</h1>
   <div class="counter-block">
-    <app-counter [title]="'Nombre de participations aux JO'" [count$]="participationsCount$"></app-counter>
+    <app-counter [title]="'Number of JOs'" [count$]="participationsCount$"></app-counter>
     <app-counter [title]="'Nombre total de médailles'" [count$]="totalMedals$"></app-counter>
     <app-counter [title]="'Nombre total d\'athlètes présentés'" [count$]="totalAthletes$"></app-counter>
   </div>
