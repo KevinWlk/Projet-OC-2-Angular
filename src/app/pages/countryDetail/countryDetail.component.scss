@@ -10,8 +10,7 @@
 h1 {
   margin-bottom: 1vh;
   font-size: 4vw;
-  background-color: #1b7474;
-  color: white;
+  color: #1b7474;
   padding: 1.5vh;
   border-radius: 1.5vh;
   text-align: center;
@@ -20,7 +19,7 @@ h1 {
 .chart-container {
   background: white;
   max-width: 100%;
-  padding: 2%;
+  padding: 10%;
 }
 
 .counter-block {
@@ -44,4 +43,39 @@ button {
 
 button:hover {
   background-color: #145b5b;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 5%;
+  }
+
+  .counter-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 6vw;
+  }
+
+  button {
+    font-size: 4vw;
+    padding: 2vh 5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 8vw;
+  }
+
+  button {
+    font-size: 5vw;
+    padding: 3vh 6vw;
+  }
+
+  .chart-container {
+    padding: 3%;
+  }
 }

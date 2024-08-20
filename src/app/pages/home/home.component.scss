@@ -6,7 +6,7 @@
   background-color: #ffffff;
   min-height: 100vh;
 
-  .dashboard-container.counter-block{
+  .dashboard-container.counter-block {
   }
 
   h1 {
@@ -16,19 +16,55 @@
     color: white;
     padding: 1vh;
     border-radius: 2vh;
+    text-align: center;
   }
+
   ::ng-deep .ngx-charts text {
     font-size: larger;
   }
+
   .chart-container {
     background: white;
     max-width: 100%;
-
   }
-  .counter-block{
+
+  .counter-block {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .counter-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  ::ng-deep .ngx-charts text {
+    font-size: medium;
+  }
+
+  .chart-container {
+    padding: 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  ::ng-deep .ngx-charts text {
+    font-size: smaller;
+  }
+
+  .chart-container {
+    padding: 3%;
   }
 }
