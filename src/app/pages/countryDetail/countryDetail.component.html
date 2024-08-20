@@ -1,5 +1,5 @@
 <div class="detail-container" *ngIf="country">
-  <h1>{{ country.country }}</h1>
+  <h1>{{ country?.country }}</h1>
   <div class="counter-block">
     <app-counter [title]="'Number of JOs'" [count$]="participationsCount$"></app-counter>
     <app-counter [title]="'Nombre total de médailles'" [count$]="totalMedals$"></app-counter>

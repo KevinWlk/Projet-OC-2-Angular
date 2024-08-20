@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, filter, map, Observable, throwError} from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 
 @Injectable({
@@ -13,16 +13,12 @@ export class OlympicService {
 
   constructor(private http: HttpClient) {}
 
-  // Chargement des données initiales depuis le fichier JSON
   loadInitialData(): Observable<OlympicCountry[]> {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
-      // Mise à jour du BehaviorSubject avec les nouvelles données
-      tap((value) => this.olympics$.next(value)),
-      // Gestion des erreurs
+      tap((value: OlympicCountry[]) => this.olympics$.next(value)),
       catchError((error) => {
         console.error(error);
         this.olympics$.next(null);
-        // Retourne un observable d'erreur pour informer les abonnés de l'erreur
         return throwError(() => new Error('Erreur lors du chargement des données'));
       })
     );
@@ -34,7 +30,7 @@ export class OlympicService {
 
   getTotalGames(): Observable<number> {
     return this.olympics$.pipe(
-      map(data => {
+      map((data: OlympicCountry[] | null) => {
         if (!data) return 0;
         const uniqueYears = new Set<number>();
         data.forEach(country => {
@@ -49,13 +45,13 @@ export class OlympicService {
 
   getTotalCountries(): Observable<number> {
     return this.olympics$.pipe(
-      map(data => data ? data.length : 0)
+      map((data: OlympicCountry[] | null) => data ? data.length : 0)
     );
   }
 
   getCountryDetails(id: string): Observable<OlympicCountry | null> {
     return this.olympics$.pipe(
-      map(olympics => {
+      map((olympics: OlympicCountry[] | null) => {
         if (!olympics) return null;
         const countryId = Number(id);
         return olympics.find(country => country.id === countryId) || null;
